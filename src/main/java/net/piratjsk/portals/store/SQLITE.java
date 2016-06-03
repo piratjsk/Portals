@@ -65,7 +65,7 @@ public class SQLITE {
 
     public ResultSet executeQuery(final String string) {
         key = null;
-        Runnable runnable = new Runnable() {
+        Runnable query = new Runnable() {
             public void run() {
                 try {
                     Connection conn = getConnection();
@@ -78,6 +78,7 @@ public class SQLITE {
                 }
             }
         };
+        query.run();
         return key;
     }
 
