@@ -1,5 +1,6 @@
 package net.piratjsk.portals;
 
+import net.piratjsk.portals.store.SQLITE;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,10 +20,12 @@ public final class Portals extends JavaPlugin {
                                                      Material.ENDER_PEARL,    Material.EYE_OF_ENDER, Material.ENDER_PEARL,
                                                      Material.REDSTONE_BLOCK, Material.ENDER_PEARL,  Material.REDSTONE_BLOCK};
     public static String activePortalsMsg;
+    private SQLITE sqlite;
 
     @Override
     public void onEnable() {
         instance = this;
+        sqlite = new SQLITE();
         // config
         saveDefaultConfig();
         activePortalsMsg = getConfig().getString("active-portals-msg");
